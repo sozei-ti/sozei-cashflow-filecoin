@@ -12,7 +12,7 @@ export function HeaderWallet(){
           <CgMenuBoxed size={25} color="white" />
           <Link href="/">
             <a>
-              <h2>CashFlow - Filecoin</h2>
+              <h2>Filecoin</h2>
             </a>
           </Link>
         </div>

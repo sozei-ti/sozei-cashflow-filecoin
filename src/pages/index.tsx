@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from './styles.module.scss'
+import styles from '../styles/home.module.scss'
 import { HeaderWallet } from '../components/HeaderWallet'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAddress, useNetwork } from "@thirdweb-dev/react"
@@ -53,19 +53,15 @@ interface Transaction {
 export default function CashFlow(){
   const address = useAddress()
   const [, switchNetwork] = useNetwork()
-  const [plan, setPlan] = useState('Free')
-  const [daysLeft, setDaysLeft] = useState(14)
   const [dateFrom, setDateFrom] = useState<Date | null>()
   const [dateTo, setDateTo] = useState<Date | null>()
   const [addressTrack, setAddressTrack] = useState('')
   const [trackingLoading, setTrackingLoading] = useState(false)
-  const [trackingUsed, setTrackingUsed] = useState(false)
   let resultTracking: Transaction[] = []
   let resultTrackingFrom: Transaction[] = []
 
-  const addressMafa = "0x6dd60afb2586d31bf390450adf5e6a9659d48c4a"
-  const addressPancake = "0x591b7b63dcd9ac56573418a62ab37c936be7459c"
-
+  const addressFIL = "0x0d8ce2a99bb6e3b7db580ed848240e4a0f9ae153"
+ 
   const moralisAPI = process.env.NEXT_PUBLIC_MORALIS_API_KEY
 
 //--------------------------------------------------------------------------------------------------//
@@ -100,8 +96,8 @@ export default function CashFlow(){
         targetPosition: Position.Left,
         type: 'output',
         position: {x: 350, y: y * 50},
-        data: {label: ( resultTracking[y].toAddress == addressPancake ? 'PancakeSwap':`${resultTracking[y].toAddress?.slice(0,6)}...${resultTracking[y].toAddress?.slice( resultTracking[y].toAddress!.length - 4, resultTracking[y].toAddress?.length)}`)},
-        style: { backgroundColor: (resultTracking[y].toAddress == addressMafa ? '#FF8206': resultTracking[y].toAddress == addressPancake ? '#3ED5E1': '#323B82'), color: 'white', fontWeight: 600, width: 120 }
+        data: {label: (`${resultTracking[y].toAddress?.slice(0,6)}...${resultTracking[y].toAddress?.slice( resultTracking[y].toAddress!.length - 4, resultTracking[y].toAddress?.length)}`)},
+        style: { backgroundColor: (resultTracking[y].toAddress == addressFIL ? '#FF8206': '#323B82'), color: 'white', fontWeight: 600, width: 120 }
       }
       nodes.push(sourceNode)
     
@@ -110,7 +106,7 @@ export default function CashFlow(){
           id: `e1-${nodeId}`,
           source: '1',
           target: `${nodeId}`,
-          label: `${resultTracking[y].value} MafaCoins`,
+          label: `${resultTracking[y].value} FIL`,
           labelStyle: { fill: 'white', fontWeight: 600},
           labelBgStyle: { fill: 'transparent', width: 100 },
           labelBgPadding: [10, 10],
@@ -130,8 +126,8 @@ export default function CashFlow(){
         sourcePosition: Position.Right,
         type: 'input',
         position: {x: -600, y: 5 * (y * 50) },
-        data: {label: ( resultTrackingFrom[y].fromAddress == addressPancake ? 'PancakeSwap':`${resultTrackingFrom[y].fromAddress?.slice(0,6)}...${resultTrackingFrom[y].fromAddress?.slice( resultTrackingFrom[y].fromAddress!.length - 4, resultTrackingFrom[y].fromAddress?.length)}`)},
-        style: { backgroundColor: (resultTrackingFrom[y].fromAddress == addressMafa ? '#FF8206': resultTrackingFrom[y].fromAddress == addressPancake ? '#3ED5E1': '#323B82'), color: 'white', fontWeight: 600, width: 120 }
+        data: {label: (`${resultTrackingFrom[y].fromAddress?.slice(0,6)}...${resultTrackingFrom[y].fromAddress?.slice( resultTrackingFrom[y].fromAddress!.length - 4, resultTrackingFrom[y].fromAddress?.length)}`)},
+        style: { backgroundColor: (resultTrackingFrom[y].fromAddress == addressFIL ? '#FF8206' : '#323B82'), color: 'white', fontWeight: 600, width: 120 }
       }
       nodes.push(sourceNode)
     
@@ -139,7 +135,7 @@ export default function CashFlow(){
         id: `e1-${nodeId}`,
         source: `${nodeId}`,
         target: `1`,
-        label: `${resultTrackingFrom[y].value} MafaCoins`,
+        label: `${resultTrackingFrom[y].value} FIL`,
         labelStyle: { fill: 'white', fontWeight: 600},
         labelBgStyle: { fill: 'transparent', width: 100 },
         labelBgPadding: [10, 10],
@@ -152,7 +148,6 @@ export default function CashFlow(){
          
     setNodes(nodes)
     setEdges(edges)
-    setTrackingUsed(true)
     setTrackingLoading(false)
   }
  
@@ -229,7 +224,7 @@ export default function CashFlow(){
         y++
       }
 
-      const list: Transaction[] = response.data.result.filter((transaction: any) => transaction.address === "0x6dd60afb2586d31bf390450adf5e6a9659d48c4a")
+      const list: Transaction[] = response.data.result.filter((transaction: any) => transaction.address === `${addressFIL}`)
       .filter((transaction: any) => transaction.to_address != addressTrack)
       .map((hash: Transaction) => {
         return {
@@ -240,7 +235,7 @@ export default function CashFlow(){
       })
       resultsTo = [...resultsTo, ...list]
 
-      const listFrom: Transaction[] = response.data.result.filter((transaction: any) => transaction.address === "0x6dd60afb2586d31bf390450adf5e6a9659d48c4a")
+      const listFrom: Transaction[] = response.data.result.filter((transaction: any) => transaction.address === `${addressFIL}`)
       .filter((transaction: any) => transaction.to_address == addressTrack)
       .map((hash: Transaction) => {
         return {
@@ -279,19 +274,6 @@ export default function CashFlow(){
 
         <div className={styles.mainContainer}>
 
-          <div className={styles.accountContainer}>
-            <div className={styles.leftAccount}>
-              <h4>My account</h4>
-              <p>Address: {address?.slice(0,6)}...{address?.slice(address.length - 4,address.length)}</p>
-              <p>Plan: <span>{plan}</span></p>
-            </div>
-            <div className={styles.rightAccount}>
-              <button>Upgrade Plan</button>
-              <span>0.0 BNB / month</span>
-              <p>Days Remaining: <span>{daysLeft} days</span></p>
-            </div>
-          </div>
-
           <div className={styles.trackingContainer}>
             <div className={styles.UpTracking}>
               <h4>Tracking</h4>
@@ -306,9 +288,7 @@ export default function CashFlow(){
               </div>
 
               <div className={styles.rightTracking}>
-                <div className={styles.RDTracking}>
-                  <button onClick={ getTransactions }>Track</button>
-                </div>
+                <button onClick={ getTransactions }>Track</button>
               </div>
             </div>
           </div>
