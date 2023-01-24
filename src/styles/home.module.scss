@@ -1,0 +1,523 @@
+.container{
+  width: 100%;
+  height: 100%;
+}
+
+.pageContainer{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 4rem 0;
+}
+
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 1080px;
+}
+
+.accountContainer{
+  margin-top: .5rem;
+  width: 100%;
+  height: 160px;
+  background: #14112eb4;
+  border-radius: 1rem;
+  border: 1px solid #1088FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .leftAccount{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1.5rem;
+
+    h4{
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: underline;
+      margin-bottom: .75rem;
+    }
+    
+    p{
+      font-size: 1.2rem;
+      font-weight: 500;
+
+      span{
+        color: #20FFE8;
+        padding-left: .5rem;
+      }
+    }
+  }
+
+  .rightAccount{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1.5rem;
+
+    button{
+      width: 180px;
+      background-color: #1088FF;
+      padding: .5rem;
+      border-radius: .5rem;
+      color: white;
+      font-weight: 500;
+      transition: all 0.2s;
+  
+      &:hover{
+        transform: scale(1.05);
+      }
+    }
+
+    span{
+      padding-top: .2rem;
+      text-align: right;
+      font-size: .8rem;
+      font-weight: 600;
+      color: #20FFE8;
+    }
+
+    p{
+      text-align: right;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+
+      span{
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-left: .5rem;
+      }
+    }
+  }
+}
+
+.trackingContainer{
+  margin-top: 3rem;
+  width: 100%;
+  height: 240px;
+  background: #14112eb4;
+  border-radius: 1rem;
+  border: 1px solid #1088FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .UpTracking{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1.5rem;
+
+    h4{
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: underline;
+      margin-bottom: .75rem;
+    }
+  }
+
+  .DownTracking{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    .leftTracking{
+      width: 70%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding: 1.5rem;
+  
+      p{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        width: 100%;
+        height: 3rem;
+        font-weight: 500;
+        color: #20FFE8;
+  
+        input{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 70%;
+          height: 3rem;
+          color: black;
+          background-color: white;
+          padding: .5rem;
+          border-radius: .5rem;
+          font-weight: 500;
+          padding-left: 1rem;
+        }
+      }
+
+      .LDTracking{
+        width: 100%;
+        height: calc(100% - 3rem);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        padding-top: 1.5rem;
+
+        p{
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: row;
+          width: 40%;
+          height: 100%;
+          font-weight: 500;
+          color: #20FFE8;
+    
+          input{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60%;
+            color: black;
+            height: 3rem;
+            padding: .5rem;
+            background-color: white;
+            border-radius: .5rem;
+            font-weight: 500;
+            margin-left: 1rem;
+          }
+        }
+      }
+    
+    }
+  
+    .rightTracking{
+      width: 30%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding: 1.5rem;
+
+      p{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        width: 100%;
+        height: 3rem;
+        font-weight: 500;
+        color: #20FFE8;
+  
+        select{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50%;
+          height: 3rem;
+          color: black;
+          background-color: white;
+          padding: .5rem;
+          border-radius: .5rem;
+          font-weight: 500;
+          margin-left: 1rem;
+        }
+      }
+
+      .RDTracking{
+        width: 100%;
+        height: calc(100% - 3rem);
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding-right: .8rem;
+
+        button{
+          width: 140px;
+          height: 3rem;
+          background-color: #8000FF;
+          border: none;
+          padding: .75rem;
+          border-radius: .5rem;
+          color: white;
+          font-weight: 500;
+          margin-top: 2.2rem;
+          transition: all 0.2s;
+      
+          &:hover{
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+  
+}
+
+.titleContainer{
+  margin-top: 4rem;
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1{
+    font-size: 3.5rem;
+    text-align: center;
+    color: #20FFE8;
+  }
+}
+
+.flowContainer{
+  margin-top: 3rem;
+  width: 100%;
+  height: 800px;
+  background: #14112eb4;
+  border-radius: 1rem;
+  border: 1px solid #1088FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.tagsContainer{
+  margin-top: 4rem;
+  width: 70%;
+  height: 240px;
+  background: #14112eb4;
+  border-radius: 1rem;
+  border: 1px solid #1088FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .UpTags{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1.5rem;
+
+    h4{
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: underline;
+      margin-bottom: .75rem;
+    }
+  }
+
+  .DownTags{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    .tagsContent{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding: 1.5rem;
+  
+      p{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        width: 100%;
+        height: 3rem;
+        font-weight: 500;
+        color: #20FFE8;
+  
+        span{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 65%;
+          height: 3rem;
+          color: black;
+          background-color: white;
+          padding: .5rem;
+          border-radius: .5rem;
+          margin-left: 1rem;
+          font-weight: 500;
+        }
+      }
+
+      .DTags{
+        width: 100%;
+        height: calc(100% - 3rem);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        padding-top: 1.5rem;
+
+        p{
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: row;
+          width: 100%;
+          height: 100%;
+          font-weight: 500;
+          color: #20FFE8;
+    
+          input{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20%;
+            color: black;
+            height: 3rem;
+            padding: .5rem;
+            background-color: white;
+            border-radius: .5rem;
+            font-weight: 500;
+            margin-left: 1rem;
+          }
+
+          button{
+            width: 120px;
+            height: 3rem;
+            background-color: #0090FF;
+            border: none;
+            padding: .75rem;
+            border-radius: .5rem;
+            color: white;
+            font-weight: 500;
+            margin-left: 2rem;
+            transition: all 0.2s;
+        
+            &:hover{
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.feedContainer{
+  margin-top: 2rem;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p{
+    width: 440px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 1rem;
+    padding: 1rem;
+    color: #20FFE8;
+    font-weight: 500;
+    transition: all 0.2s;
+        
+    &:hover{
+      transform: scale(1.05);
+    }
+  }
+}
+//Loading
+
+.loading{
+  width: 50%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  p{
+    margin-top: 3rem;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+$offset: 187;
+$duration: 1.4s;
+
+.spinner {
+  animation: rotator $duration linear infinite;
+}
+
+@keyframes rotator {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(270deg); }
+}
+
+.path {
+stroke-dasharray: $offset;
+stroke-dashoffset: 0;
+transform-origin: center;
+animation:
+  dash $duration ease-in-out infinite, 
+  colors ($duration*4) ease-in-out infinite;
+}
+
+@keyframes colors {
+0% { stroke: #4285F4; }
+25% { stroke: #DE3E35; }
+50% { stroke: #F7C223; }
+75% { stroke: #1B9A59; }
+100% { stroke: #4285F4; }
+}
+
+@keyframes dash {
+0% { stroke-dashoffset: $offset; }
+50% {
+ stroke-dashoffset: $offset/4;
+ transform:rotate(135deg);
+}
+100% {
+ stroke-dashoffset: $offset;
+ transform:rotate(450deg);
+}
+}
+
+
